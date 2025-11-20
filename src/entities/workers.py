@@ -1,15 +1,17 @@
+import yaml
 import sqlite3
+from entities.positions import Position
 
 
 class Worker:
     uuid: int
-    # position: Position
+    position: Position
     sex: bool
     name: str
     birthday: str
 
     def __init__(self, uuid:int, position, sex:bool, name:str, birthday:str) -> None:
-        """ sex = 0 = male """
+        """ sex 0 = male """
         self.uuid = uuid
         self.position = position
         self.sex = sex
@@ -24,10 +26,13 @@ class Workers:
     workers: list[Worker]
     # positions: Positions
 
-    def __init__(self, data:list, positions) -> None:
+    def __init__(self, data:list, positions, *, data_is_classes=False) -> None:
         self.positions = positions
-        self.workers = []
-        for el in data: self.workers.append(Worker(el[0], positions.get(el[1]), el[2], el[3], el[4]))
+        if data_is_classes:
+            self.workers = data
+        else:
+            self.workers = []
+            for el in data: self.workers.append(Worker(el[0], positions.get(el[1]), el[2], el[3], el[4]))
 
     def get(self, uuid:int) -> Worker:
         try: return self.workers[uuid-1]

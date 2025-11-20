@@ -1,5 +1,5 @@
 import sqlite3
-from entities.workers import Workers
+# from entities.workers import Workers
 from entities.rights import Right, Rights
 
 
@@ -33,7 +33,7 @@ class Position:
 
 class Positions:
     positions: list[Position]
-    workers: Workers
+    # workers: Workers
     rights: Rights
 
     def __init__(self, data:list, rights:Rights, workers) -> None:

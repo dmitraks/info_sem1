@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<workers>
+    <uuid>1</uuid>
+    <sex>0</sex>
+    <name>Иван Михаилович Иванов</name>
+    <birthday>28.01.1975</birthday>
+    <position>
+        <uuid>1</uuid>
+        <name>Директор</name>
+        <description>Управляет всей компанией</description>
+        <rights>
+            <right>
+                <uuid>4</uuid>
+                <name>view_own</name>
+                <description>Просмотреть свои данные</description>
+            </right>
+            <right>
+                <uuid>3</uuid>
+                <name>view_every</name>
+                <description>Просмотреть все данные</description>
+            </right>
+            <right>
+                <uuid>2</uuid>
+                <name>edit_workers_pos</name>
+                <description>Изменение должности сотрудника</description>
+            </right>
+            <right>
+                <uuid>1</uuid>
+                <name>kick_join</name>
+                <description>Увольнение и найм сотрудника</description>
+            </right>
+        </rights>
+    </position>
+    <uuid>2</uuid>
+    <sex>0</sex>
+    <name>Иван Иванович Иванов</name>
+    <birthday>12.08.1995</birthday>
+    <position>
+        <uuid>2</uuid>
+        <name>Менеджер персонала</name>
+        <description>Главный HR, нанимает и увольняет</description>
+        <rights>
+            <right>
+                <uuid>4</uuid>
+                <name>view_own</name>
+                <description>Просмотреть свои данные</description>
+            </right>
+            <right>
+                <uuid>3</uuid>
+                <name>view_every</name>
+                <description>Просмотреть все данные</description>
+            </right>
+            <right>
+                <uuid>2</uuid>
+                <name>edit_workers_pos</name>
+                <description>Изменение должности сотрудника</description>
+            </right>
+            <right>
+                <uuid>1</uuid>
+                <name>kick_join</name>
+                <description>Увольнение и найм сотрудника</description>
+            </right>
+        </rights>
+    </position>
+    <uuid>3</uuid>
+    <sex>0</sex>
+    <name>Андрей Иванович Иванов</name>
+    <birthday>17.05.1998</birthday>
+    <position>
+        <uuid>3</uuid>
+        <name>Генеральный секретарь</name>
+        <description>Создает финансовые отчеты</description>
+        <rights>
+            <right>
+                <uuid>4</uuid>
+                <name>view_own</name>
+                <description>Просмотреть свои данные</description>
+            </right>
+            <right>
+                <uuid>3</uuid>
+                <name>view_every</name>
+                <description>Просмотреть все данные</description>
+            </right>
+        </rights>
+    </position>
+    <uuid>4</uuid>
+    <sex>1</sex>
+    <name>Мария Ивановна Иванова</name>
+    <birthday>08.07.2000</birthday>
+    <position>
+        <uuid>3</uuid>
+        <name>Генеральный секретарь</name>
+        <description>Создает финансовые отчеты</description>
+        <rights>
+            <right>
+                <uuid>4</uuid>
+                <name>view_own</name>
+                <description>Просмотреть свои данные</description>
+            </right>
+            <right>
+                <uuid>3</uuid>
+                <name>view_every</name>
+                <description>Просмотреть все данные</description>
+            </right>
+        </rights>
+    </position>
+    <uuid>5</uuid>
+    <sex>1</sex>
+    <name>Полина Павловна Павлова</name>
+    <birthday>05.02.2005</birthday>
+    <position>
+        <uuid>4</uuid>
+        <name>Стажер</name>
+        <description>На испытательном сроке</description>
+        <rights>
+            <right>
+                <uuid>4</uuid>
+                <name>view_own</name>
+                <description>Просмотреть свои данные</description>
+            </right>
+        </rights>
+    </position>
+</workers>

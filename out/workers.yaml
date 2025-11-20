@@ -1,0 +1,102 @@
+!!python/object:entities.workers.Worker
+birthday: 28.01.1975
+name: Иван Михаилович Иванов
+position: !!python/object:entities.positions.Position
+    description: Управляет всей компанией
+    name: Директор
+    rights:
+    - !!python/object:entities.rights.Right
+        description: Просмотреть свои данные
+        name: view_own
+        uuid: 4
+    - !!python/object:entities.rights.Right
+        description: Просмотреть все данные
+        name: view_every
+        uuid: 3
+    - !!python/object:entities.rights.Right
+        description: Изменение должности сотрудника
+        name: edit_workers_pos
+        uuid: 2
+    - !!python/object:entities.rights.Right
+        description: Увольнение и найм сотрудника
+        name: kick_join
+        uuid: 1
+    uuid: 1
+sex: 0
+uuid: 1
+--- !!python/object:entities.workers.Worker
+birthday: 12.08.1995
+name: Иван Иванович Иванов
+position: !!python/object:entities.positions.Position
+    description: Главный HR, нанимает и увольняет
+    name: Менеджер персонала
+    rights:
+    - !!python/object:entities.rights.Right
+        description: Просмотреть свои данные
+        name: view_own
+        uuid: 4
+    - !!python/object:entities.rights.Right
+        description: Просмотреть все данные
+        name: view_every
+        uuid: 3
+    - !!python/object:entities.rights.Right
+        description: Изменение должности сотрудника
+        name: edit_workers_pos
+        uuid: 2
+    - !!python/object:entities.rights.Right
+        description: Увольнение и найм сотрудника
+        name: kick_join
+        uuid: 1
+    uuid: 2
+sex: 0
+uuid: 2
+--- !!python/object:entities.workers.Worker
+birthday: 17.05.1998
+name: Андрей Иванович Иванов
+position: !!python/object:entities.positions.Position
+    description: Создает финансовые отчеты
+    name: Генеральный секретарь
+    rights:
+    - !!python/object:entities.rights.Right
+        description: Просмотреть свои данные
+        name: view_own
+        uuid: 4
+    - !!python/object:entities.rights.Right
+        description: Просмотреть все данные
+        name: view_every
+        uuid: 3
+    uuid: 3
+sex: 0
+uuid: 3
+--- !!python/object:entities.workers.Worker
+birthday: 08.07.2000
+name: Мария Ивановна Иванова
+position: !!python/object:entities.positions.Position
+    description: Создает финансовые отчеты
+    name: Генеральный секретарь
+    rights:
+    - !!python/object:entities.rights.Right
+        description: Просмотреть свои данные
+        name: view_own
+        uuid: 4
+    - !!python/object:entities.rights.Right
+        description: Просмотреть все данные
+        name: view_every
+        uuid: 3
+    uuid: 3
+sex: 1
+uuid: 4
+--- !!python/object:entities.workers.Worker
+birthday: 05.02.2005
+name: Полина Павловна Павлова
+position: !!python/object:entities.positions.Position
+    description: На испытательном сроке
+    name: Стажер
+    rights:
+    - !!python/object:entities.rights.Right
+        description: Просмотреть свои данные
+        name: view_own
+        uuid: 4
+    uuid: 4
+sex: 1
+uuid: 5

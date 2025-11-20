@@ -1,11 +1,14 @@
+import os
 import sqlite3
 from time import sleep
 from entities.workers import Workers
 from entities.positions import Positions
 from entities.rights import Rights
+from entities.outputs import Outputs
 
 
 def main(): # учет сотрудников и должностей
+    os.makedirs('out', exist_ok=True)
     create_tables()
     # write_examples()
     data = read_data()
@@ -13,9 +16,10 @@ def main(): # учет сотрудников и должностей
     positions:Positions = data[1]
     rights:Rights = data[2]
     print('Working with database...\n')
-    while True:
-        iterat(workers, positions, rights)
-        sleep(1)
+    Outputs(workers, positions).all_sers()
+    # while True:
+    #     iterat(workers, positions, rights)
+    #     sleep(1)
 
 
 def iterat(workers:Workers, positions:Positions, rights:Rights) -> None:

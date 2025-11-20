@@ -1,0 +1,132 @@
+[
+    {
+        "uuid": 1,
+        "sex": 0,
+        "name": "Иван Михаилович Иванов",
+        "birthday": "28.01.1975",
+        "position": {
+            "uuid": 1,
+            "name": "Директор",
+            "description": "Управляет всей компанией",
+            "rights": [
+                {
+                    "uuid": 4,
+                    "name": "view_own",
+                    "description": "Просмотреть свои данные"
+                },
+                {
+                    "uuid": 3,
+                    "name": "view_every",
+                    "description": "Просмотреть все данные"
+                },
+                {
+                    "uuid": 2,
+                    "name": "edit_workers_pos",
+                    "description": "Изменение должности сотрудника"
+                },
+                {
+                    "uuid": 1,
+                    "name": "kick_join",
+                    "description": "Увольнение и найм сотрудника"
+                }
+            ]
+        }
+    },
+    {
+        "uuid": 2,
+        "sex": 0,
+        "name": "Иван Иванович Иванов",
+        "birthday": "12.08.1995",
+        "position": {
+            "uuid": 2,
+            "name": "Менеджер персонала",
+            "description": "Главный HR, нанимает и увольняет",
+            "rights": [
+                {
+                    "uuid": 4,
+                    "name": "view_own",
+                    "description": "Просмотреть свои данные"
+                },
+                {
+                    "uuid": 3,
+                    "name": "view_every",
+                    "description": "Просмотреть все данные"
+                },
+                {
+                    "uuid": 2,
+                    "name": "edit_workers_pos",
+                    "description": "Изменение должности сотрудника"
+                },
+                {
+                    "uuid": 1,
+                    "name": "kick_join",
+                    "description": "Увольнение и найм сотрудника"
+                }
+            ]
+        }
+    },
+    {
+        "uuid": 3,
+        "sex": 0,
+        "name": "Андрей Иванович Иванов",
+        "birthday": "17.05.1998",
+        "position": {
+            "uuid": 3,
+            "name": "Генеральный секретарь",
+            "description": "Создает финансовые отчеты",
+            "rights": [
+                {
+                    "uuid": 4,
+                    "name": "view_own",
+                    "description": "Просмотреть свои данные"
+                },
+                {
+                    "uuid": 3,
+                    "name": "view_every",
+                    "description": "Просмотреть все данные"
+                }
+            ]
+        }
+    },
+    {
+        "uuid": 4,
+        "sex": 1,
+        "name": "Мария Ивановна Иванова",
+        "birthday": "08.07.2000",
+        "position": {
+            "uuid": 3,
+            "name": "Генеральный секретарь",
+            "description": "Создает финансовые отчеты",
+            "rights": [
+                {
+                    "uuid": 4,
+                    "name": "view_own",
+                    "description": "Просмотреть свои данные"
+                },
+                {
+                    "uuid": 3,
+                    "name": "view_every",
+                    "description": "Просмотреть все данные"
+                }
+            ]
+        }
+    },
+    {
+        "uuid": 5,
+        "sex": 1,
+        "name": "Полина Павловна Павлова",
+        "birthday": "05.02.2005",
+        "position": {
+            "uuid": 4,
+            "name": "Стажер",
+            "description": "На испытательном сроке",
+            "rights": [
+                {
+                    "uuid": 4,
+                    "name": "view_own",
+                    "description": "Просмотреть свои данные"
+                }
+            ]
+        }
+    }
+]
