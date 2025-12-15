@@ -1,132 +1,258 @@
-[
-    {
-        "uuid": 1,
-        "sex": 0,
-        "name": "Иван Михаилович Иванов",
-        "birthday": "28.01.1975",
-        "position": {
+{
+    "Rights": [
+        {
+            "uuid": 1,
+            "name": "workers_list",
+            "description": "Список сотрудников"
+        },
+        {
+            "uuid": 2,
+            "name": "workers_create",
+            "description": "Нанять сотрудника"
+        },
+        {
+            "uuid": 3,
+            "name": "workers_delete",
+            "description": "Уволить сотрудника"
+        },
+        {
+            "uuid": 4,
+            "name": "workers_change",
+            "description": "Изменить данные сотрудника"
+        },
+        {
+            "uuid": 5,
+            "name": "positions_list",
+            "description": "Список должностей"
+        },
+        {
+            "uuid": 6,
+            "name": "positions_create",
+            "description": "Создать должность"
+        },
+        {
+            "uuid": 7,
+            "name": "positions_delete",
+            "description": "Удалить должность"
+        },
+        {
+            "uuid": 8,
+            "name": "positions_change",
+            "description": "Изменить данные должности"
+        },
+        {
+            "uuid": 9,
+            "name": "positions_rights",
+            "description": "Изменить права должности"
+        },
+        {
+            "uuid": 10,
+            "name": "rights_list",
+            "description": "Список прав"
+        },
+        {
+            "uuid": 11,
+            "name": "rights_create",
+            "description": "Создать право"
+        },
+        {
+            "uuid": 12,
+            "name": "rights_delete",
+            "description": "Удалить право"
+        },
+        {
+            "uuid": 13,
+            "name": "rights_change",
+            "description": "Переименовать право"
+        },
+        {
+            "uuid": 14,
+            "name": "output",
+            "description": "Создать отчёт"
+        }
+    ],
+    "Positions": [
+        {
             "uuid": 1,
             "name": "Директор",
-            "description": "Управляет всей компанией",
-            "rights": [
-                {
-                    "uuid": 4,
-                    "name": "view_own",
-                    "description": "Просмотреть свои данные"
-                },
-                {
-                    "uuid": 2,
-                    "name": "edit_workers_pos",
-                    "description": "Изменение должности сотрудника"
-                },
-                {
-                    "uuid": 1,
-                    "name": "kick_join",
-                    "description": "Увольнение и найм сотрудника"
-                },
-                {
-                    "uuid": 3,
-                    "name": "view_every",
-                    "description": "Просмотреть все данные"
-                }
-            ]
-        }
-    },
-    {
-        "uuid": 2,
-        "sex": 0,
-        "name": "Иван Иванович Иванов",
-        "birthday": "12.08.1995",
-        "position": {
+            "description": "Управляет всей компанией"
+        },
+        {
             "uuid": 2,
             "name": "Менеджер персонала",
-            "description": "Главный HR, нанимает и увольняет",
-            "rights": [
-                {
-                    "uuid": 4,
-                    "name": "view_own",
-                    "description": "Просмотреть свои данные"
-                },
-                {
-                    "uuid": 2,
-                    "name": "edit_workers_pos",
-                    "description": "Изменение должности сотрудника"
-                },
-                {
-                    "uuid": 1,
-                    "name": "kick_join",
-                    "description": "Увольнение и найм сотрудника"
-                },
-                {
-                    "uuid": 3,
-                    "name": "view_every",
-                    "description": "Просмотреть все данные"
-                }
-            ]
-        }
-    },
-    {
-        "uuid": 3,
-        "sex": 0,
-        "name": "Андрей Иванович Иванов",
-        "birthday": "17.05.1998",
-        "position": {
+            "description": "Главный HR, нанимает и увольняет"
+        },
+        {
             "uuid": 3,
             "name": "Генеральный секретарь",
-            "description": "Создает финансовые отчеты",
-            "rights": [
-                {
-                    "uuid": 4,
-                    "name": "view_own",
-                    "description": "Просмотреть свои данные"
-                },
-                {
-                    "uuid": 3,
-                    "name": "view_every",
-                    "description": "Просмотреть все данные"
-                }
-            ]
-        }
-    },
-    {
-        "uuid": 4,
-        "sex": 1,
-        "name": "Мария Ивановна Иванова",
-        "birthday": "08.07.2000",
-        "position": {
-            "uuid": 3,
-            "name": "Генеральный секретарь",
-            "description": "Создает финансовые отчеты",
-            "rights": [
-                {
-                    "uuid": 4,
-                    "name": "view_own",
-                    "description": "Просмотреть свои данные"
-                },
-                {
-                    "uuid": 3,
-                    "name": "view_every",
-                    "description": "Просмотреть все данные"
-                }
-            ]
-        }
-    },
-    {
-        "uuid": 5,
-        "sex": 1,
-        "name": "Полина Павловна Павлова",
-        "birthday": "05.02.2005",
-        "position": {
+            "description": "Создает финансовые отчеты"
+        },
+        {
             "uuid": 4,
             "name": "Стажер",
-            "description": "На испытательном сроке",
-            "rights": [
-                {
-                    "uuid": 4,
-                    "name": "view_own",
-                    "description": "Просмотреть свои данные"
-                }
-            ]
+            "description": "На испытательном сроке"
+        },
+        {
+            "uuid": 5,
+            "name": "абуба",
+            "description": "аа"
         }
-    }
-]
+    ],
+    "PositionsToRights": [
+        {
+            "uuid": 1,
+            "position": 1,
+            "right": 1
+        },
+        {
+            "uuid": 2,
+            "position": 1,
+            "right": 2
+        },
+        {
+            "uuid": 3,
+            "position": 1,
+            "right": 3
+        },
+        {
+            "uuid": 4,
+            "position": 1,
+            "right": 4
+        },
+        {
+            "uuid": 5,
+            "position": 1,
+            "right": 5
+        },
+        {
+            "uuid": 6,
+            "position": 1,
+            "right": 6
+        },
+        {
+            "uuid": 7,
+            "position": 1,
+            "right": 7
+        },
+        {
+            "uuid": 8,
+            "position": 1,
+            "right": 8
+        },
+        {
+            "uuid": 9,
+            "position": 1,
+            "right": 9
+        },
+        {
+            "uuid": 10,
+            "position": 1,
+            "right": 10
+        },
+        {
+            "uuid": 11,
+            "position": 1,
+            "right": 11
+        },
+        {
+            "uuid": 12,
+            "position": 1,
+            "right": 12
+        },
+        {
+            "uuid": 13,
+            "position": 1,
+            "right": 13
+        },
+        {
+            "uuid": 14,
+            "position": 1,
+            "right": 14
+        },
+        {
+            "uuid": 15,
+            "position": 2,
+            "right": 1
+        },
+        {
+            "uuid": 16,
+            "position": 2,
+            "right": 2
+        },
+        {
+            "uuid": 17,
+            "position": 2,
+            "right": 3
+        },
+        {
+            "uuid": 18,
+            "position": 2,
+            "right": 4
+        },
+        {
+            "uuid": 19,
+            "position": 2,
+            "right": 5
+        },
+        {
+            "uuid": 20,
+            "position": 2,
+            "right": 6
+        },
+        {
+            "uuid": 21,
+            "position": 3,
+            "right": 14
+        }
+    ],
+    "Workers": [
+        {
+            "uuid": 1,
+            "token": "ivanmiha1",
+            "position": 1,
+            "sex": 0,
+            "name": "Иван Михаилович Иванов",
+            "birthday": "28.01.1975"
+        },
+        {
+            "uuid": 2,
+            "token": "ivanivan1",
+            "position": 2,
+            "sex": 0,
+            "name": "Иван Иванович Иванов",
+            "birthday": "12.08.1995"
+        },
+        {
+            "uuid": 3,
+            "token": "andrandr1",
+            "position": 3,
+            "sex": 0,
+            "name": "Андрей Иванович Иванов",
+            "birthday": "17.05.1998"
+        },
+        {
+            "uuid": 4,
+            "token": "mariivan1",
+            "position": 3,
+            "sex": 1,
+            "name": "Мария Ивановна Иванова",
+            "birthday": "08.07.2000"
+        },
+        {
+            "uuid": 5,
+            "token": "polipavl1",
+            "position": 4,
+            "sex": 1,
+            "name": "Полина Павловна Павлова",
+            "birthday": "05.02.2005"
+        },
+        {
+            "uuid": 6,
+            "token": "alexalex1",
+            "position": 4,
+            "sex": 0,
+            "name": "Александр Александрович Попов",
+            "birthday": "12.10.2002"
+        }
+    ]
+}

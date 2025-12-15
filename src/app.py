@@ -1,114 +1,100 @@
 import os
 import sqlite3
 from time import sleep
-from entities.workers import Workers
-from entities.positions import Positions
-from entities.rights import Rights
-from entities.outputs import Outputs
+from classes.workers import Workers
+from classes.actions import Actions
+from classes.outputs import Outputs
 
 
-def main(): # учет сотрудников и должностей
+def main():
     os.makedirs('out', exist_ok=True)
-    create_tables()
-    # write_examples()
-    data = read_data()
-    workers:Workers = data[0]
-    positions:Positions = data[1]
-    rights:Rights = data[2]
-    print('Working with database...\n')
-    Outputs(workers, positions).all_sers()
-    # while True:
-    #     iterat(workers, positions, rights)
-    #     sleep(1)
+    actions = Actions()
+    while True:
+        rightslist = make_login()
+        if not rightslist is None: break
+        sleep(1)
+    while True:
+        match input('С чем работать? Опции: "права", "должности", "права должности", "сотрудники", "отчёт". Ввод: '):
+            case 'права': work_rights(rightslist, actions)
+            case 'должности': work_positions(rightslist, actions)
+            case 'права должности': work_rights_positions(rightslist, actions)
+            case 'сотрудники': work_workers(rightslist, actions)
+            case 'отчёт': Outputs().all_sers()
+            case _: print('Ошибка, вы ввели некорректное значение.')
+        sleep(1)
 
 
-def iterat(workers:Workers, positions:Positions, rights:Rights) -> None:
-    match input('\nWhat will we do? 1 - get all female workers at the position, 2 - get the workers\'s rights,\n3 - get all positions with the right. Input: '):
-        case '1':
-            pos = positions.getbyname(input('Input position: '))
-            if not pos: return print('Invalid position!')
-            params = {'position': [['==', pos]], 'sex': [['==', 1]]}
-            if (res := workers.search(params)) == None: return print('Invalid input at all!')
-            if res == []: return print('Zero workers!')
-            for worker in res: print(worker.name)
-        case '2':
-            params = {'name': [['contain', input('Input worker\'s name: ')]]}
-            if (res := workers.search(params)) == None: return print('Invalid input at all!')
-            match len(res):
-                case 0: return print('Zero workers!')
-                case 1: return print(f'{res[0].name}\'s rights: {", ".join([right.description for right in res[0].position.rights] or "Zero")}')
-            # > 1
-            params = {'birthday': [['contain', input('Input worker\'s birthday: ')]]}
-            if (res := workers.search(params, res)) == None: return print('Invalid input at all!')
-            match len(res):
-                case 0: print('Zero workers!')
-                case 1: print(f'{res[0].name}\'s rights: {", ".join([right.description for right in res[0].position.rights] or "Zero")}')
-                case _: print('Too many workers!')
-        case '3':
-            right = rights.getsbydesc(input('Input right: '))
-            if not right: return print('Zero rights!')
-            if len(right) != 1: return print('Too many rights!')
-            params = {'with': [['right', right[0]]]}
-            if (res := positions.search(params)) == None: return print('Invalid input at all!')
-            if res == []: return print('Zero positions!')
-            for position in res: print(position.name)
-        case _: print('Wrong input!')
+def make_login() -> None|list[str]:
+    try:
+        w_name, p_name, rights = Workers.check_token(input('Введите свой код входа: '))
+    except sqlite3.Error as e:
+        print(f'Произошла ошибка: {e}')
+        return None
+    print(f'Вы авторизованы как {w_name} ({p_name})!')
+    return rights
 
 
-def create_tables():
-    requests = [
-                'CREATE TABLE IF NOT EXISTS Workers(uuid INTEGER PRIMARY KEY, position INTEGER DEFAULT 1 REFERENCES Positions(uuid), sex BOOLEAN, name TEXT, birthday TEXT)',
-                'CREATE TABLE IF NOT EXISTS Positions(uuid INTEGER PRIMARY KEY, name TEXT, description TEXT)',
-                'CREATE TABLE IF NOT EXISTS Rights(uuid INTEGER PRIMARY KEY, name TEXT, description TEXT)',
-                'CREATE TABLE IF NOT EXISTS PositionsToRights(uuid INTEGER PRIMARY KEY, position INTEGER REFERENCES Positions(uuid), right INTEGER REFERENCES Rights(uuid))'
-    ]
-    with sqlite3.connect('database.db') as con:
-        cur = con.cursor()
-        for request in requests: cur.execute(request)
+def work_rights(rights:list[str], actions:Actions):
+    match input('Что делать с правами? Опции: "список", "создать", "изменить", "удалить". Ввод: '):
+        case 'список':
+            if 'rights_list' in rights: actions.rights_list()
+            else: print('Ошибка, вам недоступно это действие.')
+        case 'создать':
+            if 'rights_create' in rights: actions.rights_create(input('Ввод названия права: '), input('Ввод описания права: '))
+            else: print('Ошибка, вам недоступно это действие.')
+        case 'изменить':
+            if 'rights_change' in rights: actions.rights_change(input('Ввод старого названия права: '), input('Ввод нового названия права: '), input('Ввод нового описания права: '))
+            else: print('Ошибка, вам недоступно это действие.')
+        case 'удалить':
+            if 'rights_delete' in rights: actions.rights_delete(input('Ввод названия права: '))
+            else: print('Ошибка, вам недоступно это действие.')
+        case _: print('Ошибка, вы ввели некорректное значение.')
 
+def work_positions(rights:list[str], actions:Actions):
+    match input('Что делать с должностями? Опции: "список", "создать", "изменить", "удалить". Ввод: '):
+        case 'список':
+            if 'positions_list' in rights: actions.positions_list()
+            else: print('Ошибка, вам недоступно это действие.')
+        case 'создать':
+            if 'positions_create' in rights: actions.positions_create(input('Ввод названия должности: '), input('Ввод описания должности: '), input('Ввод прав должности через запятую: '))
+            else: print('Ошибка, вам недоступно это действие.')
+        case 'изменить':
+            if 'positions_change' in rights: actions.positions_change(input('Ввод старого названия должности: '), input('Ввод нового названия должности: '), input('Ввод нового описания должности: '))
+            else: print('Ошибка, вам недоступно это действие.')
+        case 'удалить':
+            if 'positions_delete' in rights: actions.positions_delete(input('Ввод названия должности: '))
+            else: print('Ошибка, вам недоступно это действие.')
+        case _: print('Ошибка, вы ввели некорректное значение.')
 
-def write_examples():
-    with sqlite3.connect('database.db') as con:
-        cur = con.cursor()
-        cur.execute('INSERT INTO workers(position, sex, name, birthday) VALUES(1, 0, "Иван Михаилович Иванов", "28.01.1975")')
-        cur.execute('INSERT INTO workers(position, sex, name, birthday) VALUES(2, 0, "Иван Иванович Иванов", "12.08.1995")')
-        cur.execute('INSERT INTO workers(position, sex, name, birthday) VALUES(3, 0, "Андрей Иванович Иванов", "17.05.1998")')
-        cur.execute('INSERT INTO workers(position, sex, name, birthday) VALUES(3, 1, "Мария Ивановна Иванова", "08.07.2000")')
-        cur.execute('INSERT INTO workers(position, sex, name, birthday) VALUES(4, 1, "Полина Павловна Павлова", "05.02.2005")')
-        cur.execute('INSERT INTO positions(name, description) VALUES("Директор", "Управляет всей компанией")')
-        cur.execute('INSERT INTO positions(name, description) VALUES("Менеджер персонала", "Главный HR, нанимает и увольняет")')
-        cur.execute('INSERT INTO positions(name, description) VALUES("Генеральный секретарь", "Создает финансовые отчеты")')
-        cur.execute('INSERT INTO positions(name, description) VALUES("Стажер", "На испытательном сроке")')
-        cur.execute('INSERT INTO rights(name, description) VALUES("kick_join", "Увольнение и найм сотрудника")')
-        cur.execute('INSERT INTO rights(name, description) VALUES("edit_workers_pos", "Изменение должности сотрудника")')
-        cur.execute('INSERT INTO rights(name, description) VALUES("view_every", "Просмотреть все данные")')
-        cur.execute('INSERT INTO rights(name, description) VALUES("view_own", "Просмотреть свои данные")')
-        cur.execute('INSERT INTO positionstorights(position, right) VALUES(1, 1)')
-        cur.execute('INSERT INTO positionstorights(position, right) VALUES(1, 2)')
-        cur.execute('INSERT INTO positionstorights(position, right) VALUES(1, 3)')
-        cur.execute('INSERT INTO positionstorights(position, right) VALUES(1, 4)')
-        cur.execute('INSERT INTO positionstorights(position, right) VALUES(2, 1)')
-        cur.execute('INSERT INTO positionstorights(position, right) VALUES(2, 2)')
-        cur.execute('INSERT INTO positionstorights(position, right) VALUES(2, 3)')
-        cur.execute('INSERT INTO positionstorights(position, right) VALUES(2, 4)')
-        cur.execute('INSERT INTO positionstorights(position, right) VALUES(3, 3)')
-        cur.execute('INSERT INTO positionstorights(position, right) VALUES(3, 4)')
-        cur.execute('INSERT INTO positionstorights(position, right) VALUES(4, 4)')
+def work_rights_positions(rights:list[str], actions:Actions):
+    match input('Что делать с правами у этой должности? Опции: "список", "добавить", "удалить". Ввод: '):
+        case 'список':
+            if 'positions_rights' in rights: actions.positions_rights_list(input('Ввод названия должности: '))
+            else: print('Ошибка, вам недоступно это действие.')
+        case 'добавить':
+            if 'positions_rights' in rights: actions.positions_rights_add(input('Ввод названия должности: '), input('Ввод права для добавления: '))
+            else: print('Ошибка, вам недоступно это действие.')
+        case 'удалить':
+            if 'positions_rights' in rights: actions.positions_rights_del(input('Ввод названия должности: '), input('Ввод права для удаления: '))
+            else: print('Ошибка, вам недоступно это действие.')
+        case _: print('Ошибка, вы ввели некорректное значение.')
 
-
-def read_data() -> list:
-    with sqlite3.connect('database.db') as con:
-        cur = con.cursor()
-        tworkers = cur.execute('SELECT * FROM Workers').fetchall()
-        tpositions = cur.execute('SELECT * FROM Positions').fetchall()
-        trights = cur.execute('SELECT * FROM Rights').fetchall()
-        tpositionstorights = cur.execute('SELECT * FROM PositionsToRights').fetchall()
-    rights = Rights(trights, tpositionstorights)
-    positions = Positions(tpositions, rights, Workers)
-    workers = Workers(tworkers, positions)
-    return [workers, positions, rights]
-
+def work_workers(rights:list[str], actions:Actions):
+    match input('Что делать с работниками? Опции: "список", "создать", "изменить", "удалить". Ввод: '):
+        case 'список':
+            if 'workers_list' in rights: actions.workers_list()
+            else: print('Ошибка, вам недоступно это действие.')
+        case 'создать':
+            if 'workers_create' in rights: actions.workers_create(input('Ввод имени работника: '), input('Ввод кода входа для работника: '), input('Ввод должности работника: '), input('Ввод пола работника (м/ж): '), input('Ввод дня рождения работника: '))
+            else: print('Ошибка, вам недоступно это действие.')
+        case 'изменить':
+            if 'workers_change' in rights: actions.workers_change(input('Ввод старого имени работника: '), input('Ввод нового имени работника: '), input('Ввод нового кода входа для работника: '), input('Ввод новой должности работника: '), input('Ввод нового пола работника (м/ж): '), input('Ввод нового дня рождения работника: '))
+            else: print('Ошибка, вам недоступно это действие.')
+        case 'удалить':
+            if 'workers_delete' in rights: actions.workers_delete(input('Ввод названия должности: '))
+            else: print('Ошибка, вам недоступно это действие.')
+        case _: print('Ошибка, вы ввели некорректное значение.')
 
 
 if __name__ == '__main__': main()
-else: raise BaseException('You can\'t use it as a library')
+else: raise ImportError('You can\'t use it as a library')

@@ -1,123 +1,259 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<workers>
-    <uuid>1</uuid>
-    <sex>0</sex>
-    <name>Иван Михаилович Иванов</name>
-    <birthday>28.01.1975</birthday>
-    <position>
-        <uuid>1</uuid>
-        <name>Директор</name>
-        <description>Управляет всей компанией</description>
-        <rights>
-            <right>
-                <uuid>4</uuid>
-                <name>view_own</name>
-                <description>Просмотреть свои данные</description>
-            </right>
-            <right>
-                <uuid>2</uuid>
-                <name>edit_workers_pos</name>
-                <description>Изменение должности сотрудника</description>
-            </right>
-            <right>
-                <uuid>1</uuid>
-                <name>kick_join</name>
-                <description>Увольнение и найм сотрудника</description>
-            </right>
-            <right>
-                <uuid>3</uuid>
-                <name>view_every</name>
-                <description>Просмотреть все данные</description>
-            </right>
-        </rights>
-    </position>
-    <uuid>2</uuid>
-    <sex>0</sex>
-    <name>Иван Иванович Иванов</name>
-    <birthday>12.08.1995</birthday>
-    <position>
-        <uuid>2</uuid>
-        <name>Менеджер персонала</name>
-        <description>Главный HR, нанимает и увольняет</description>
-        <rights>
-            <right>
-                <uuid>4</uuid>
-                <name>view_own</name>
-                <description>Просмотреть свои данные</description>
-            </right>
-            <right>
-                <uuid>2</uuid>
-                <name>edit_workers_pos</name>
-                <description>Изменение должности сотрудника</description>
-            </right>
-            <right>
-                <uuid>1</uuid>
-                <name>kick_join</name>
-                <description>Увольнение и найм сотрудника</description>
-            </right>
-            <right>
-                <uuid>3</uuid>
-                <name>view_every</name>
-                <description>Просмотреть все данные</description>
-            </right>
-        </rights>
-    </position>
-    <uuid>3</uuid>
-    <sex>0</sex>
-    <name>Андрей Иванович Иванов</name>
-    <birthday>17.05.1998</birthday>
-    <position>
-        <uuid>3</uuid>
-        <name>Генеральный секретарь</name>
-        <description>Создает финансовые отчеты</description>
-        <rights>
-            <right>
-                <uuid>4</uuid>
-                <name>view_own</name>
-                <description>Просмотреть свои данные</description>
-            </right>
-            <right>
-                <uuid>3</uuid>
-                <name>view_every</name>
-                <description>Просмотреть все данные</description>
-            </right>
-        </rights>
-    </position>
-    <uuid>4</uuid>
-    <sex>1</sex>
-    <name>Мария Ивановна Иванова</name>
-    <birthday>08.07.2000</birthday>
-    <position>
-        <uuid>3</uuid>
-        <name>Генеральный секретарь</name>
-        <description>Создает финансовые отчеты</description>
-        <rights>
-            <right>
-                <uuid>4</uuid>
-                <name>view_own</name>
-                <description>Просмотреть свои данные</description>
-            </right>
-            <right>
-                <uuid>3</uuid>
-                <name>view_every</name>
-                <description>Просмотреть все данные</description>
-            </right>
-        </rights>
-    </position>
-    <uuid>5</uuid>
-    <sex>1</sex>
-    <name>Полина Павловна Павлова</name>
-    <birthday>05.02.2005</birthday>
-    <position>
-        <uuid>4</uuid>
-        <name>Стажер</name>
-        <description>На испытательном сроке</description>
-        <rights>
-            <right>
-                <uuid>4</uuid>
-                <name>view_own</name>
-                <description>Просмотреть свои данные</description>
-            </right>
-        </rights>
-    </position>
-</workers>
+<?xml version='1.0' encoding='utf-8'?>
+<database>
+    <table name="Rights">
+        <record>
+            <uuid>1</uuid>
+            <name>workers_list</name>
+            <description>Список сотрудников</description>
+        </record>
+        <record>
+            <uuid>2</uuid>
+            <name>workers_create</name>
+            <description>Нанять сотрудника</description>
+        </record>
+        <record>
+            <uuid>3</uuid>
+            <name>workers_delete</name>
+            <description>Уволить сотрудника</description>
+        </record>
+        <record>
+            <uuid>4</uuid>
+            <name>workers_change</name>
+            <description>Изменить данные сотрудника</description>
+        </record>
+        <record>
+            <uuid>5</uuid>
+            <name>positions_list</name>
+            <description>Список должностей</description>
+        </record>
+        <record>
+            <uuid>6</uuid>
+            <name>positions_create</name>
+            <description>Создать должность</description>
+        </record>
+        <record>
+            <uuid>7</uuid>
+            <name>positions_delete</name>
+            <description>Удалить должность</description>
+        </record>
+        <record>
+            <uuid>8</uuid>
+            <name>positions_change</name>
+            <description>Изменить данные должности</description>
+        </record>
+        <record>
+            <uuid>9</uuid>
+            <name>positions_rights</name>
+            <description>Изменить права должности</description>
+        </record>
+        <record>
+            <uuid>10</uuid>
+            <name>rights_list</name>
+            <description>Список прав</description>
+        </record>
+        <record>
+            <uuid>11</uuid>
+            <name>rights_create</name>
+            <description>Создать право</description>
+        </record>
+        <record>
+            <uuid>12</uuid>
+            <name>rights_delete</name>
+            <description>Удалить право</description>
+        </record>
+        <record>
+            <uuid>13</uuid>
+            <name>rights_change</name>
+            <description>Переименовать право</description>
+        </record>
+        <record>
+            <uuid>14</uuid>
+            <name>output</name>
+            <description>Создать отчёт</description>
+        </record>
+    </table>
+    <table name="Positions">
+        <record>
+            <uuid>1</uuid>
+            <name>Директор</name>
+            <description>Управляет всей компанией</description>
+        </record>
+        <record>
+            <uuid>2</uuid>
+            <name>Менеджер персонала</name>
+            <description>Главный HR, нанимает и увольняет</description>
+        </record>
+        <record>
+            <uuid>3</uuid>
+            <name>Генеральный секретарь</name>
+            <description>Создает финансовые отчеты</description>
+        </record>
+        <record>
+            <uuid>4</uuid>
+            <name>Стажер</name>
+            <description>На испытательном сроке</description>
+        </record>
+        <record>
+            <uuid>5</uuid>
+            <name>абуба</name>
+            <description>аа</description>
+        </record>
+    </table>
+    <table name="PositionsToRights">
+        <record>
+            <uuid>1</uuid>
+            <position>1</position>
+            <right>1</right>
+        </record>
+        <record>
+            <uuid>2</uuid>
+            <position>1</position>
+            <right>2</right>
+        </record>
+        <record>
+            <uuid>3</uuid>
+            <position>1</position>
+            <right>3</right>
+        </record>
+        <record>
+            <uuid>4</uuid>
+            <position>1</position>
+            <right>4</right>
+        </record>
+        <record>
+            <uuid>5</uuid>
+            <position>1</position>
+            <right>5</right>
+        </record>
+        <record>
+            <uuid>6</uuid>
+            <position>1</position>
+            <right>6</right>
+        </record>
+        <record>
+            <uuid>7</uuid>
+            <position>1</position>
+            <right>7</right>
+        </record>
+        <record>
+            <uuid>8</uuid>
+            <position>1</position>
+            <right>8</right>
+        </record>
+        <record>
+            <uuid>9</uuid>
+            <position>1</position>
+            <right>9</right>
+        </record>
+        <record>
+            <uuid>10</uuid>
+            <position>1</position>
+            <right>10</right>
+        </record>
+        <record>
+            <uuid>11</uuid>
+            <position>1</position>
+            <right>11</right>
+        </record>
+        <record>
+            <uuid>12</uuid>
+            <position>1</position>
+            <right>12</right>
+        </record>
+        <record>
+            <uuid>13</uuid>
+            <position>1</position>
+            <right>13</right>
+        </record>
+        <record>
+            <uuid>14</uuid>
+            <position>1</position>
+            <right>14</right>
+        </record>
+        <record>
+            <uuid>15</uuid>
+            <position>2</position>
+            <right>1</right>
+        </record>
+        <record>
+            <uuid>16</uuid>
+            <position>2</position>
+            <right>2</right>
+        </record>
+        <record>
+            <uuid>17</uuid>
+            <position>2</position>
+            <right>3</right>
+        </record>
+        <record>
+            <uuid>18</uuid>
+            <position>2</position>
+            <right>4</right>
+        </record>
+        <record>
+            <uuid>19</uuid>
+            <position>2</position>
+            <right>5</right>
+        </record>
+        <record>
+            <uuid>20</uuid>
+            <position>2</position>
+            <right>6</right>
+        </record>
+        <record>
+            <uuid>21</uuid>
+            <position>3</position>
+            <right>14</right>
+        </record>
+    </table>
+    <table name="Workers">
+        <record>
+            <uuid>1</uuid>
+            <token>ivanmiha1</token>
+            <position>1</position>
+            <sex>0</sex>
+            <name>Иван Михаилович Иванов</name>
+            <birthday>28.01.1975</birthday>
+        </record>
+        <record>
+            <uuid>2</uuid>
+            <token>ivanivan1</token>
+            <position>2</position>
+            <sex>0</sex>
+            <name>Иван Иванович Иванов</name>
+            <birthday>12.08.1995</birthday>
+        </record>
+        <record>
+            <uuid>3</uuid>
+            <token>andrandr1</token>
+            <position>3</position>
+            <sex>0</sex>
+            <name>Андрей Иванович Иванов</name>
+            <birthday>17.05.1998</birthday>
+        </record>
+        <record>
+            <uuid>4</uuid>
+            <token>mariivan1</token>
+            <position>3</position>
+            <sex>1</sex>
+            <name>Мария Ивановна Иванова</name>
+            <birthday>08.07.2000</birthday>
+        </record>
+        <record>
+            <uuid>5</uuid>
+            <token>polipavl1</token>
+            <position>4</position>
+            <sex>1</sex>
+            <name>Полина Павловна Павлова</name>
+            <birthday>05.02.2005</birthday>
+        </record>
+        <record>
+            <uuid>6</uuid>
+            <token>alexalex1</token>
+            <position>4</position>
+            <sex>0</sex>
+            <name>Александр Александрович Попов</name>
+            <birthday>12.10.2002</birthday>
+        </record>
+    </table>
+</database>

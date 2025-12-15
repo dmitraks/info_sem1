@@ -1,0 +1,15 @@
+uuid,name,description
+1,workers_list,Список сотрудников
+2,workers_create,Нанять сотрудника
+3,workers_delete,Уволить сотрудника
+4,workers_change,Изменить данные сотрудника
+5,positions_list,Список должностей
+6,positions_create,Создать должность
+7,positions_delete,Удалить должность
+8,positions_change,Изменить данные должности
+9,positions_rights,Изменить права должности
+10,rights_list,Список прав
+11,rights_create,Создать право
+12,rights_delete,Удалить право
+13,rights_change,Переименовать право
+14,output,Создать отчёт
