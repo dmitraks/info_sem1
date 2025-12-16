@@ -2,46 +2,41 @@
 left to right direction
 skinparam packageStyle rectangle
 actor "Сотрудник" as Aworker
-package "Система" {
+package "Основное" {
 usecase "Вход в систему" as Clogin
-usecase "Просмотр своих данных" as Cread_data
-usecase "Должность, стаж" as Cread_data_role
-usecase "Заработная плата" as Cread_data_zp
-usecase "Премии, выговоры" as Cread_data_premii
-usecase "Просмотр своих задач" as Cread_tasks
 }
 Aworker --> Clogin
-Aworker --> Cread_data
-Aworker --> Cread_tasks
-Cread_data ^-- Cread_data_role
-Cread_data ^-- Cread_data_zp
-Cread_data ^-- Cread_data_premii
-actor "Глава отдела" as Amanager
-package "Система" {
-usecase "Просмотр данных своих сотрудников" as Cread_workers
-usecase "Редактирование данных своих сотрудников" as Cedit_workers
-usecase "Выдача заданий" as Cedit_workers_tasks
-usecase "Выдача премий" as Cedit_workers_premii
-usecase "Выдача выговоров" as Cedit_workers_vigi
+actor "Директор" as Amanager
+package "Права" {
+    usecase "Создание новых прав" as Cright_cre
+    usecase "Изменение данных прав" as Cright_upd
+    usecase "Удаление прав" as Cright_del
 }
-Amanager -^ Aworker
-Amanager --> Cread_workers
-Amanager --> Cedit_workers
-Cedit_workers ^-- Cedit_workers_premii
-Cedit_workers ^-- Cedit_workers_tasks
-Cedit_workers ^-- Cedit_workers_vigi
+package "Должности" {
+    usecase "Создание новых должностей" as Cpos_cre
+    usecase "Редактирование данных должностей" as Cpos_upd
+    usecase "Удаление должностей" as Cpos_del
+}
+Amanager --> Cpos_cre
+Amanager --> Cpos_upd
+Amanager --> Cpos_del
+Amanager --> Cright_cre
+Amanager --> Cright_del
 actor "HR" as AHR
-package "Система" {
-usecase "Просмотр данных сотрудников" as Cread_allworkers
-usecase "Регистрация новых сотрудников" as Cregister
-usecase "Редактирование данных сотрудников" as Cedit_allworkers
-usecase "Найм сотрудников" as Cregister_naym
-usecase "Увольнение сотрудников" as Cedit_allworkers_uval
+Amanager -^ AHR
+package "Сотрудники" {
+    usecase "Найм сотрудников" as Cregister_naym
+    usecase "Редактирование данных всех сотрудников" as Cedit_allworkers
+    usecase "Увольнение сотрудников" as Cedit_allworkers_uval
 }
-AHR --> Clogin
-AHR --> Cread_allworkers
-AHR --> Cregister
+AHR -^ Aworker
 AHR --> Cedit_allworkers
-Cregister <<-- Cregister_naym
-Cedit_allworkers <<-- Cedit_allworkers_uval
+AHR --> Cregister_naym
+AHR --> Cedit_allworkers_uval
+actor "Секретарь" as Asec
+package "Отчётность" {
+    usecase "Формирование отчётности" as Cotchet
+}
+Asec -^ Aworker
+Asec --> Cotchet
 @enduml
